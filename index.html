@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BlackScaling — E-Commerce Growth Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0a0a0a;
+    --off-black: #111111;
+    --surface: #161616;
+    --surface-2: #1e1e1e;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --gold-dim: rgba(201,168,76,0.15);
+    --white: #f5f3ee;
+    --muted: #888880;
+    --border: rgba(201,168,76,0.2);
+    --border-subtle: rgba(255,255,255,0.06);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 4rem;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border-subtle);
+  }
+
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 1.4rem;
+    letter-spacing: 0.08em;
+    color: var(--white);
+    text-decoration: none;
+  }
+
+  .logo span { color: var(--gold); }
+
+  nav a.cta-nav {
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    border: 0.5px solid var(--gold);
+    padding: 0.55rem 1.4rem;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  nav a.cta-nav:hover {
+    background: var(--gold);
+    color: var(--black);
+  }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 0 4rem;
+    gap: 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #hero::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-text { padding-top: 6rem; }
+
+  .hero-eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 32px;
+    height: 0.5px;
+    background: var(--gold);
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(3rem, 5vw, 5rem);
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.5rem;
+    color: var(--white);
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 440px;
+    margin-bottom: 2.5rem;
+    line-height: 1.8;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--black);
+    text-decoration: none;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 1rem 2.4rem;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-1px);
+  }
+
+  .btn-ghost {
+    display: inline-block;
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 1rem 2rem;
+    border: 0.5px solid var(--border-subtle);
+    margin-left: 1rem;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .btn-ghost:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  .hero-image {
+    position: relative;
+    height: 680px;
+    padding-top: 5rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+
+  .photo-frame {
+    width: 100%;
+    max-width: 400px;
+    height: 560px;
+    position: relative;
+  }
+
+  .photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    filter: grayscale(20%);
+  }
+
+  .photo-frame::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 30%;
+    background: linear-gradient(to top, var(--black), transparent);
+  }
+
+  .photo-border {
+    position: absolute;
+    top: 20px; right: -20px;
+    width: 100%;
+    height: 100%;
+    border: 0.5px solid var(--border);
+    z-index: -1;
+    max-width: 400px;
+  }
+
+  .stats-row {
+    display: flex;
+    gap: 2.5rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 0.5px solid var(--border-subtle);
+  }
+
+  .stat-item {}
+
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .stat-label {
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* ABOUT */
+  #about {
+    padding: 8rem 4rem;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .section-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 32px;
+    height: 0.5px;
+    background: var(--gold);
+  }
+
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(2rem, 3.5vw, 3.2rem);
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+    color: var(--white);
+  }
+
+  h2 em { font-style: italic; color: var(--gold); }
+
+  .about-body {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 640px;
+    line-height: 1.85;
+  }
+
+  /* SERVICES */
+  #services {
+    padding: 4rem 4rem 8rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .services-header {
+    margin-bottom: 4rem;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border-subtle);
+    border: 0.5px solid var(--border-subtle);
+  }
+
+  .service-card {
+    background: var(--off-black);
+    padding: 2.5rem 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.25s;
+    cursor: default;
+  }
+
+  .service-card:hover {
+    background: var(--surface);
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 0.5px;
+    background: transparent;
+    transition: background 0.25s;
+  }
+
+  .service-card:hover::before {
+    background: var(--gold);
+  }
+
+  .service-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.85rem;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5rem;
+    opacity: 0.7;
+  }
+
+  .service-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 1.4rem;
+    color: var(--white);
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+  }
+
+  .service-desc {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.75;
+  }
+
+  /* CONTACT */
+  #contact {
+    padding: 8rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .contact-left {}
+
+  .contact-intro {
+    font-size: 1rem;
+    color: var(--muted);
+    margin-top: 1.5rem;
+    line-height: 1.85;
+    max-width: 420px;
+  }
+
+  .contact-detail {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .contact-detail a {
+    color: var(--gold);
+    text-decoration: none;
+    font-size: 0.88rem;
+    letter-spacing: 0.05em;
+    transition: opacity 0.2s;
+  }
+
+  .contact-detail a:hover { opacity: 0.7; }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  label {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  input, textarea {
+    background: var(--surface);
+    border: 0.5px solid var(--border-subtle);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 300;
+    padding: 0.9rem 1.1rem;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+
+  input::placeholder, textarea::placeholder {
+    color: rgba(136,136,128,0.4);
+  }
+
+  input:focus, textarea:focus {
+    border-color: var(--gold);
+  }
+
+  textarea { resize: vertical; min-height: 120px; }
+
+  .form-select {
+    background: var(--surface);
+    border: 0.5px solid var(--border-subtle);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 300;
+    padding: 0.9rem 1.1rem;
+    outline: none;
+    width: 100%;
+    appearance: none;
+    cursor: pointer;
+  }
+
+  .form-select option { background: var(--surface); }
+
+  .submit-btn {
+    background: var(--gold);
+    color: var(--black);
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 1.1rem 2.4rem;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    align-self: flex-start;
+    margin-top: 0.5rem;
+  }
+
+  .submit-btn:hover {
+    background: var(--gold-light);
+    transform: translateY(-1px);
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 0.5px solid var(--border-subtle);
+    padding: 2.5rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    letter-spacing: 0.08em;
+    color: var(--white);
+    text-decoration: none;
+  }
+
+  .footer-logo span { color: var(--gold); }
+
+  .footer-copy {
+    font-size: 0.78rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .footer-links a {
+    font-size: 0.78rem;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--gold); }
+
+  /* DIVIDER */
+  .section-divider {
+    width: 100%;
+    height: 0.5px;
+    background: var(--border-subtle);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-text { animation: fadeUp 0.9s ease both; }
+  .hero-image { animation: fadeUp 1.1s ease 0.15s both; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1.25rem 1.5rem; }
+    #hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 4rem; min-height: auto; }
+    .hero-image { height: 420px; padding-top: 0; }
+    .photo-frame { max-width: 320px; height: 400px; }
+    #about, #services { padding: 4rem 1.5rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    #contact { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 3rem; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
+    .footer-links { justify-content: center; }
+    .stats-row { gap: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo">Black<span>Scaling</span></a>
+  <a href="#contact" class="cta-nav">Anfragen</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-text">
+    <p class="hero-eyebrow">E-Commerce Growth Studio</p>
+    <h1>Mehr Umsatz.<br><em>Weniger</em><br>Rauschen.</h1>
+    <p class="hero-sub">Wir helfen D2C-Brands im DACH-Raum, ihre Paid-Media- und E-Commerce-Systeme so aufzubauen, dass sie skalieren — ohne zu verbrennen.</p>
+    <div>
+      <a href="#contact" class="btn-primary">Projekt anfragen</a>
+      <a href="#services" class="btn-ghost">Leistungen</a>
+    </div>
+    <div class="stats-row">
+      <div class="stat-item">
+        <div class="stat-num">5+</div>
+        <div class="stat-label">Jahre E-Commerce</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">6</div>
+        <div class="stat-label">Spezialisierungen</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">DACH</div>
+        <div class="stat-label">Markt-Fokus</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-image">
+    <div class="photo-frame">
+      <!-- DEIN FOTO: src="./assets/joscha.jpg" ändern -->
+      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80" alt="Joscha — BlackScaling">
+      <div class="photo-border"></div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <p class="section-label">Über BlackScaling</p>
+  <h2>Gebaut aus<br><em>echter</em> Praxis.</h2>
+  <p class="about-body">
+    BlackScaling entstand aus fünf Jahren im Aufbau einer eigenen Premium-Brand im D2C-Bereich. Was dabei gelernt wurde: Die meisten Shops kämpfen nicht mit schlechten Produkten — sondern mit schlechten Systemen. Zu hohe CPAs, leaky Funnels, unstrukturierte E-Mail-Flows, blinde Flecken bei der Konkurrenz.<br><br>
+    Wir lösen genau diese Probleme — mit dem Blick eines Operators, nicht eines Beraters.
+  </p>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-header">
+    <p class="section-label">Leistungen</p>
+    <h2>Was wir <em>konkret</em><br>für dich tun.</h2>
+  </div>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <div class="service-title">Social Media Ad Creation</div>
+      <p class="service-desc">Scroll-stopping Creatives für Instagram und TikTok — entwickelt für Conversion, nicht für Likes. Hook-Testing inklusive.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <div class="service-title">Shopify Store Optimierung</div>
+      <p class="service-desc">CRO-Audit, Speed-Optimierung, Checkout-Analyse. Wir finden, wo dein Shop Geld liegen lässt — und schließen die Lücke.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <div class="service-title">Klaviyo Flows & Newsletter</div>
+      <p class="service-desc">Von Willkommens-Flow bis Advanced Post-Purchase-Sequenz. Basic-Setup oder vollständige Retention-Architektur — je nach Bedarf.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <div class="service-title">Meta Ads Management</div>
+      <p class="service-desc">Kampagnen-Struktur, Creative-Testing, Budget-Allokation. Kein Black-Box-Reporting — transparente Performance-Arbeit.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-num">05</div>
+      <div class="service-title">Konkurrenzanalyse</div>
+      <p class="service-desc">Systematische Analyse deiner direkten Wettbewerber: Positionierung, Creatives, Angebote, Preisstruktur. Datenbasiert, nicht gefühlt.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-num">06</div>
+      <div class="service-title">Strategie-Erstgespräch</div>
+      <p class="service-desc">Nicht sicher was du brauchst? 30 Minuten, kostenlos. Wir schauen gemeinsam auf dein Setup und geben dir sofort verwertbare Einschätzungen.</p>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-left">
+    <p class="section-label">Kontakt</p>
+    <h2>Lass uns<br><em>sprechen.</em></h2>
+    <p class="contact-intro">Du hast ein konkretes Projekt, eine offene Frage oder willst einfach wissen ob wir zusammenpassen? Schreib uns — wir melden uns innerhalb von 24 Stunden.</p>
+    <div class="contact-detail">
+      <a href="mailto:hello@blackscaling.de">hello@blackscaling.de</a>
+      <a href="https://blackscaling.de">blackscaling.de</a>
+    </div>
+  </div>
+
+  <form action="https://formspree.io/f/DEINE_FORM_ID" method="POST">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" placeholder="Max Mustermann" required>
+    </div>
+    <div class="form-group">
+      <label for="email">E-Mail</label>
+      <input type="email" id="email" name="email" placeholder="mail@deineshop.de" required>
+    </div>
+    <div class="form-group">
+      <label for="service">Leistung</label>
+      <select id="service" name="service" class="form-select">
+        <option value="">— Bitte wählen —</option>
+        <option>Social Media Ad Creation</option>
+        <option>Shopify Store Optimierung</option>
+        <option>Klaviyo Flows & Newsletter</option>
+        <option>Meta Ads Management</option>
+        <option>Konkurrenzanalyse</option>
+        <option>Strategie-Erstgespräch</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="message">Kurzbeschreibung</label>
+      <textarea id="message" name="message" placeholder="Was ist dein aktuelles Setup, was ist das Ziel?"></textarea>
+    </div>
+    <button type="submit" class="submit-btn">Anfrage senden</button>
+  </form>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="footer-logo">Black<span>Scaling</span></a>
+  <p class="footer-copy">© 2025 BlackScaling</p>
+  <div class="footer-links">
+    <a href="#">Impressum</a>
+    <a href="#">Datenschutz</a>
+  </div>
+</footer>
+
+</body>
+</html>
