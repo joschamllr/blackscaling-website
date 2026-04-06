@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Impressum — BlackScaling</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0a0a0a;
+    --off-black: #111111;
+    --surface: #161616;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --white: #f5f3ee;
+    --muted: #888880;
+    --border: rgba(201,168,76,0.2);
+    --border-subtle: rgba(255,255,255,0.06);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 4rem;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border-subtle);
+  }
+
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 1.4rem;
+    letter-spacing: 0.08em;
+    color: var(--white);
+    text-decoration: none;
+  }
+
+  .logo span { color: var(--gold); }
+
+  nav a.cta-nav {
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    border: 0.5px solid var(--gold);
+    padding: 0.55rem 1.4rem;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  nav a.cta-nav:hover {
+    background: var(--gold);
+    color: var(--black);
+  }
+
+  /* CONTENT */
+  main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 10rem 4rem 8rem;
+  }
+
+  .page-eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .page-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 32px;
+    height: 0.5px;
+    background: var(--gold);
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 4rem;
+  }
+
+  .section {
+    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 0.5px solid var(--border-subtle);
+  }
+
+  .section:last-child {
+    border-bottom: none;
+  }
+
+  h2 {
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.25rem;
+  }
+
+  p {
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.85;
+  }
+
+  a {
+    color: var(--gold);
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  a:hover { opacity: 0.7; }
+
+  /* FOOTER */
+  footer {
+    border-top: 0.5px solid var(--border-subtle);
+    padding: 2.5rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    letter-spacing: 0.08em;
+    color: var(--white);
+    text-decoration: none;
+  }
+
+  .footer-logo span { color: var(--gold); }
+
+  .footer-copy {
+    font-size: 0.78rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .footer-links a {
+    font-size: 0.78rem;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--gold); }
+
+  @media (max-width: 900px) {
+    nav { padding: 1.25rem 1.5rem; }
+    main { padding: 8rem 1.5rem 5rem; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
+    .footer-links { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">Black<span>Scaling</span></a>
+  <a href="/#contact" class="cta-nav">Anfragen</a>
+</nav>
+
+<main>
+  <p class="page-eyebrow">Rechtliches</p>
+  <h1>Impressum</h1>
+
+  <div class="section">
+    <h2>Angaben gemäß § 5 TMG</h2>
+    <p>
+      Puravie Joscha Müller<br>
+      Onlinehandel<br>
+      Bissersheimer Straße 2a<br>
+      67281 Kirchheim an der Weinstraße
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>Kontakt</h2>
+    <p>
+      Telefon: <a href="tel:+4963598070572">+49 6359 8070572</a><br>
+      E-Mail: <a href="mailto:info@puravie.de">info@puravie.de</a>
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>Umsatzsteuer-ID</h2>
+    <p>
+      Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:<br>
+      DE815816142
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>Angaben zur Berufshaftpflichtversicherung</h2>
+    <p>
+      <strong style="color: var(--white); font-weight: 400;">Name und Sitz des Versicherers:</strong><br>
+      Allianz Versicherungs-AG<br><br>
+      <strong style="color: var(--white); font-weight: 400;">Geltungsraum der Versicherung:</strong><br>
+      Deutschland
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>EU-Streitschlichtung</h2>
+    <p>
+      Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:<br>
+      <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr/</a><br><br>
+      Unsere E-Mail-Adresse finden Sie oben im Impressum.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>Verbraucherstreitbeilegung / Universalschlichtungsstelle</h2>
+    <p>
+      Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
+    </p>
+  </div>
+</main>
+
+<footer>
+  <a href="/" class="footer-logo">Black<span>Scaling</span></a>
+  <p class="footer-copy">© 2025 BlackScaling</p>
+  <div class="footer-links">
+    <a href="/impressum.html">Impressum</a>
+    <a href="/datenschutz.html">Datenschutz</a>
+  </div>
+</footer>
+
+</body>
+</html>

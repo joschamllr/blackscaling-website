@@ -293,7 +293,7 @@
 
   /* SERVICES */
   #services {
-    padding: 4rem 4rem 8rem;
+    padding: 4rem 4rem 0;
     max-width: 1200px;
     margin: 0 auto;
   }
@@ -302,67 +302,168 @@
     margin-bottom: 4rem;
   }
 
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--border-subtle);
-    border: 0.5px solid var(--border-subtle);
+  .services-accordion {
+    display: flex;
+    flex-direction: column;
+    border-top: 0.5px solid var(--border-subtle);
   }
 
-  .service-card {
-    background: var(--off-black);
-    padding: 2.5rem 2rem;
-    position: relative;
-    overflow: hidden;
-    transition: background 0.25s;
-    cursor: default;
+  .accordion-item {
+    border-bottom: 0.5px solid var(--border-subtle);
   }
 
-  .service-card:hover {
-    background: var(--surface);
+  .accordion-trigger {
+    width: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 1.6rem 0;
+    text-align: left;
+    transition: background 0.2s;
   }
 
-  .service-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 0.5px;
-    background: transparent;
-    transition: background 0.25s;
+  .accordion-trigger:hover .accordion-title {
+    color: var(--gold);
   }
 
-  .service-card:hover::before {
-    background: var(--gold);
-  }
-
-  .service-num {
+  .accordion-num {
     font-family: 'Cormorant Garamond', serif;
     font-size: 0.85rem;
     color: var(--gold);
     letter-spacing: 0.1em;
-    margin-bottom: 1.5rem;
     opacity: 0.7;
+    min-width: 2rem;
+    flex-shrink: 0;
   }
 
-  .service-title {
+  .accordion-title {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 400;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
+    color: var(--white);
+    line-height: 1.2;
+    flex: 1;
+    transition: color 0.2s;
+  }
+
+  .accordion-arrow {
+    width: 28px;
+    height: 28px;
+    border: 0.5px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: transform 0.3s ease, border-color 0.2s;
+    color: var(--gold);
+  }
+
+  .accordion-arrow svg {
+    width: 14px;
+    height: 14px;
+    transition: transform 0.3s ease;
+  }
+
+  .accordion-item.open .accordion-arrow {
+    border-color: var(--gold);
+  }
+
+  .accordion-item.open .accordion-arrow svg {
+    transform: rotate(180deg);
+  }
+
+  .accordion-body {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.35s ease;
+  }
+
+  .accordion-item.open .accordion-body {
+    grid-template-rows: 1fr;
+  }
+
+  .accordion-inner {
+    overflow: hidden;
+  }
+
+  .accordion-desc {
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.85;
+    padding: 0 0 2rem 4rem;
+    max-width: 680px;
+  }
+
+  .strategy-cta {
+    margin-top: 4rem;
+    padding: 2.5rem 3rem;
+    border: 0.5px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+  }
+
+  .strategy-cta-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+
+  .strategy-cta-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 1.7rem;
     color: var(--white);
     margin-bottom: 0.75rem;
     line-height: 1.2;
   }
 
-  .service-desc {
-    font-size: 0.88rem;
+  .strategy-cta-desc {
+    font-size: 0.9rem;
     color: var(--muted);
-    line-height: 1.75;
+    line-height: 1.8;
+    max-width: 540px;
+  }
+
+  .strategy-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border: 0.5px solid var(--gold);
+    color: var(--gold);
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .strategy-arrow svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .strategy-arrow:hover {
+    background: var(--gold);
+    color: var(--black);
+  }
+
+  @media (max-width: 900px) {
+    .strategy-cta {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 2rem 1.5rem;
+    }
   }
 
   /* CONTACT */
   #contact {
-    padding: 8rem 4rem;
+    padding: 4rem 4rem 8rem;
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
@@ -563,7 +664,7 @@
   <div class="hero-text">
     <p class="hero-eyebrow">E-Commerce Growth Studio</p>
     <h1>Mehr Umsatz.<br><em>Weniger</em><br>Rauschen.</h1>
-    <p class="hero-sub">Wir helfen D2C-Brands im DACH-Raum, ihre Paid-Media- und E-Commerce-Systeme so aufzubauen, dass sie skalieren — ohne zu verbrennen.</p>
+    <p class="hero-sub">Ich helfe D2C-Brands im DACH-Raum, ihre Paid-Media- und E-Commerce-Systeme so aufzubauen, dass sie skalieren — ohne zu verbrennen.</p>
     <div>
       <a href="#contact" class="btn-primary">Projekt anfragen</a>
       <a href="#services" class="btn-ghost">Leistungen</a>
@@ -587,7 +688,7 @@
   <div class="hero-image">
     <div class="photo-frame">
       <!-- DEIN FOTO: src="./assets/joscha.jpg" ändern -->
-      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80" alt="Joscha — BlackScaling">
+      <img src="./joscha.png" alt="Joscha — BlackScaling">
       <div class="photo-border"></div>
     </div>
   </div>
@@ -601,7 +702,7 @@
   <h2>Gebaut aus<br><em>echter</em> Praxis.</h2>
   <p class="about-body">
     BlackScaling entstand aus fünf Jahren im Aufbau einer eigenen Premium-Brand im D2C-Bereich. Was dabei gelernt wurde: Die meisten Shops kämpfen nicht mit schlechten Produkten — sondern mit schlechten Systemen. Zu hohe CPAs, leaky Funnels, unstrukturierte E-Mail-Flows, blinde Flecken bei der Konkurrenz.<br><br>
-    Wir lösen genau diese Probleme — mit dem Blick eines Operators, nicht eines Beraters.
+    Ich löse genau diese Probleme — mit dem Blick eines Operators, nicht eines Beraters.
   </p>
 </section>
 
@@ -611,51 +712,99 @@
 <section id="services">
   <div class="services-header">
     <p class="section-label">Leistungen</p>
-    <h2>Was wir <em>konkret</em><br>für dich tun.</h2>
+    <h2>Was ich <em>konkret</em><br>für dich tue.</h2>
   </div>
 
-  <div class="services-grid">
-    <div class="service-card">
-      <div class="service-num">01</div>
-      <div class="service-title">Social Media Ad Creation</div>
-      <p class="service-desc">Scroll-stopping Creatives für Instagram und TikTok — entwickelt für Conversion, nicht für Likes. Hook-Testing inklusive.</p>
+  <div class="services-accordion">
+
+    <div class="accordion-item">
+      <button class="accordion-trigger" aria-expanded="false">
+        <span class="accordion-num">01</span>
+        <span class="accordion-title">Social Media Ad Creation</span>
+        <span class="accordion-arrow"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="2,4 7,10 12,4"/></svg></span>
+      </button>
+      <div class="accordion-body" role="region">
+        <div class="accordion-inner">
+          <p class="accordion-desc">Scroll-stopping Creatives für Instagram und TikTok — entwickelt für Conversion, nicht für Likes. Ich entwickle Konzept, Text und Bildsprache, teste verschiedene Hooks gegeneinander und leite aus den Ergebnissen die nächste Iteration ab. Das Ziel: Creatives, die nicht nur gut aussehen, sondern tatsächlich verkaufen.</p>
+        </div>
+      </div>
     </div>
-    <div class="service-card">
-      <div class="service-num">02</div>
-      <div class="service-title">Shopify Store Optimierung</div>
-      <p class="service-desc">CRO-Audit, Speed-Optimierung, Checkout-Analyse. Wir finden, wo dein Shop Geld liegen lässt — und schließen die Lücke.</p>
+
+    <div class="accordion-item">
+      <button class="accordion-trigger" aria-expanded="false">
+        <span class="accordion-num">02</span>
+        <span class="accordion-title">Shopify Store Optimierung</span>
+        <span class="accordion-arrow"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="2,4 7,10 12,4"/></svg></span>
+      </button>
+      <div class="accordion-body" role="region">
+        <div class="accordion-inner">
+          <p class="accordion-desc">CRO-Audit, Speed-Optimierung, Checkout-Analyse. Ich finde, wo dein Shop Geld liegen lässt — und schließe die Lücke. Das umfasst die Analyse von Seitenstruktur, Ladezeiten, Produktseiten, Warenkorb und Checkout-Flow sowie konkrete Umsetzungsempfehlungen mit Priorität.</p>
+        </div>
+      </div>
     </div>
-    <div class="service-card">
-      <div class="service-num">03</div>
-      <div class="service-title">Klaviyo Flows & Newsletter</div>
-      <p class="service-desc">Von Willkommens-Flow bis Advanced Post-Purchase-Sequenz. Basic-Setup oder vollständige Retention-Architektur — je nach Bedarf.</p>
+
+    <div class="accordion-item">
+      <button class="accordion-trigger" aria-expanded="false">
+        <span class="accordion-num">03</span>
+        <span class="accordion-title">Klaviyo Flows & Newsletter</span>
+        <span class="accordion-arrow"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="2,4 7,10 12,4"/></svg></span>
+      </button>
+      <div class="accordion-body" role="region">
+        <div class="accordion-inner">
+          <p class="accordion-desc">Von Willkommens-Flow bis Advanced Post-Purchase-Sequenz. Je nach Bedarf baue ich ein solides Basis-Setup oder eine vollständige Retention-Architektur — inklusive Segmentierung, A/B-Testing der Betreffzeilen und regelmäßiger Kampagnenplanung. E-Mail ist der profitabelste Kanal im D2C — wenn er richtig aufgebaut ist.</p>
+        </div>
+      </div>
     </div>
-    <div class="service-card">
-      <div class="service-num">04</div>
-      <div class="service-title">Meta Ads Management</div>
-      <p class="service-desc">Kampagnen-Struktur, Creative-Testing, Budget-Allokation. Kein Black-Box-Reporting — transparente Performance-Arbeit.</p>
+
+    <div class="accordion-item">
+      <button class="accordion-trigger" aria-expanded="false">
+        <span class="accordion-num">04</span>
+        <span class="accordion-title">Meta Ads Management</span>
+        <span class="accordion-arrow"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="2,4 7,10 12,4"/></svg></span>
+      </button>
+      <div class="accordion-body" role="region">
+        <div class="accordion-inner">
+          <p class="accordion-desc">Kampagnen-Struktur, Creative-Testing, Budget-Allokation — kein Black-Box-Reporting, sondern transparente Performance-Arbeit. Ich übernehme die operative Steuerung deiner Meta-Kampagnen, teste systematisch Zielgruppen und Creatives und optimiere auf echte Geschäftsziele, nicht auf Vanity-Metrics.</p>
+        </div>
+      </div>
     </div>
-    <div class="service-card">
-      <div class="service-num">05</div>
-      <div class="service-title">Konkurrenzanalyse</div>
-      <p class="service-desc">Systematische Analyse deiner direkten Wettbewerber: Positionierung, Creatives, Angebote, Preisstruktur. Datenbasiert, nicht gefühlt.</p>
+
+    <div class="accordion-item">
+      <button class="accordion-trigger" aria-expanded="false">
+        <span class="accordion-num">05</span>
+        <span class="accordion-title">Konkurrenzanalyse</span>
+        <span class="accordion-arrow"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="2,4 7,10 12,4"/></svg></span>
+      </button>
+      <div class="accordion-body" role="region">
+        <div class="accordion-inner">
+          <p class="accordion-desc">Systematische Analyse deiner direkten Wettbewerber: Positionierung, Creatives, Angebote, Preisstruktur. Datenbasiert, nicht gefühlt. Du bekommst ein strukturiertes Dokument mit klaren Erkenntnissen — was die Konkurrenz besser macht, wo die Lücken sind und wie du dich davon abheben kannst.</p>
+        </div>
+      </div>
     </div>
-    <div class="service-card">
-      <div class="service-num">06</div>
-      <div class="service-title">Strategie-Erstgespräch</div>
-      <p class="service-desc">Nicht sicher was du brauchst? 30 Minuten, kostenlos. Wir schauen gemeinsam auf dein Setup und geben dir sofort verwertbare Einschätzungen.</p>
+
+  </div>
+
+  <div class="strategy-cta">
+    <div class="strategy-cta-left">
+      <p class="strategy-cta-label">Kostenloses Erstgespräch</p>
+      <h3 class="strategy-cta-title">Nicht sicher, was du brauchst?</h3>
+      <p class="strategy-cta-desc">30 Minuten, kostenlos. Ich schaue mir gemeinsam mit dir dein Setup an und gebe dir sofort verwertbare Einschätzungen — ohne Verkaufsdruck. Am Ende weißt du, wo die größten Hebel liegen, egal ob wir danach zusammenarbeiten oder nicht.</p>
     </div>
+    <a href="#contact" class="strategy-arrow" aria-label="Zum Kontaktformular">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" xmlns="http://www.w3.org/2000/svg">
+        <line x1="12" y1="4" x2="12" y2="20"/>
+        <polyline points="6,14 12,20 18,14"/>
+      </svg>
+    </a>
   </div>
 </section>
-
-<div class="section-divider"></div>
 
 <!-- CONTACT -->
 <section id="contact">
   <div class="contact-left">
     <p class="section-label">Kontakt</p>
-    <h2>Lass uns<br><em>sprechen.</em></h2>
-    <p class="contact-intro">Du hast ein konkretes Projekt, eine offene Frage oder willst einfach wissen ob wir zusammenpassen? Schreib uns — wir melden uns innerhalb von 24 Stunden.</p>
+    <h2>Meld dich<br><em>gerne.</em></h2>
+    <p class="contact-intro">Du hast ein konkretes Projekt, eine offene Frage oder willst einfach wissen ob es passt? Schreib mir — ich melde mich innerhalb von 24 Stunden.</p>
     <div class="contact-detail">
       <a href="mailto:hello@blackscaling.de">hello@blackscaling.de</a>
       <a href="https://blackscaling.de">blackscaling.de</a>
@@ -696,10 +845,31 @@
   <a href="#" class="footer-logo">Black<span>Scaling</span></a>
   <p class="footer-copy">© 2025 BlackScaling</p>
   <div class="footer-links">
-    <a href="#">Impressum</a>
-    <a href="#">Datenschutz</a>
+    <a href="/impressum.html">Impressum</a>
+    <a href="/datenschutz.html">Datenschutz</a>
   </div>
 </footer>
+
+<script>
+  document.querySelectorAll('.accordion-trigger').forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const item = trigger.closest('.accordion-item');
+      const isOpen = item.classList.contains('open');
+
+      // Alle schließen
+      document.querySelectorAll('.accordion-item.open').forEach(open => {
+        open.classList.remove('open');
+        open.querySelector('.accordion-trigger').setAttribute('aria-expanded', 'false');
+      });
+
+      // Dieses öffnen (wenn es vorher zu war)
+      if (!isOpen) {
+        item.classList.add('open');
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+</script>
 
 </body>
 </html>
