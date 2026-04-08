@@ -397,6 +397,30 @@
     max-width: 680px;
   }
 
+  .pricing-note {
+    margin-top: 3rem;
+    padding: 2rem 0;
+    border-top: 0.5px solid var(--border-subtle);
+    display: flex;
+    align-items: baseline;
+    gap: 2rem;
+  }
+
+  .pricing-note-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.7;
+    flex-shrink: 0;
+  }
+
+  .pricing-note-text {
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
   .strategy-cta {
     margin-top: 4rem;
     padding: 2.5rem 3rem;
@@ -824,12 +848,12 @@
     <div class="accordion-item">
       <button class="accordion-trigger" aria-expanded="false">
         <span class="accordion-num">01</span>
-        <span class="accordion-title">Social Media Ad Creation</span>
+        <span class="accordion-title">Meta Ad Creation</span>
         <span class="accordion-arrow"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="2,4 7,10 12,4"/></svg></span>
       </button>
       <div class="accordion-body" role="region">
         <div class="accordion-inner">
-          <p class="accordion-desc">Scroll-stopping Creatives für Instagram und TikTok — entwickelt für Conversion, nicht für Likes. Ich entwickle Konzept, Text und Bildsprache, teste verschiedene Hooks gegeneinander und leite aus den Ergebnissen die nächste Iteration ab. Das Ziel: Creatives, die nicht nur gut aussehen, sondern tatsächlich verkaufen.</p>
+          <p class="accordion-desc">Scroll-stopping Creatives speziell für Meta — entwickelt für Conversion, nicht für Likes. Ich entwickle Konzept, Text und Bildsprache, teste verschiedene Hooks gegeneinander und leite aus den Ergebnissen die nächste Iteration ab. Das Ziel: Creatives, die nicht nur gut aussehen, sondern tatsächlich auf Meta verkaufen.</p>
         </div>
       </div>
     </div>
@@ -888,21 +912,19 @@
 
   </div>
 
-  <div class="strategy-cta">
-    <div class="strategy-cta-left">
-      <p class="strategy-cta-label">Kostenloses Erstgespräch</p>
-      <h3 class="strategy-cta-title">Nicht sicher, was du brauchst?</h3>
-      <p class="strategy-cta-desc">30 Minuten, kostenlos. Ich schaue mir gemeinsam mit dir dein Setup an und gebe dir sofort verwertbare Einschätzungen — ohne Verkaufsdruck. Am Ende weißt du, wo die größten Hebel liegen, egal ob wir danach zusammenarbeiten oder nicht.</p>
-    </div>
+  <div class="pricing-note">
+    <p class="pricing-note-label">Preise</p>
+    <p class="pricing-note-text">Jedes Angebot wird individuell nach dem Erstgespräch erstellt — so können wir die optimale Preis-Leistungs-Lösung für deinen Onlineshop finden.</p>
   </div>
+
 </section>
 
 <!-- CONTACT -->
 <section id="contact">
   <div class="contact-left">
-    <p class="section-label">Kontakt</p>
-    <h2>Meld dich<br><em>gerne.</em></h2>
-    <p class="contact-intro">Du hast ein konkretes Projekt, eine offene Frage oder willst einfach wissen ob es passt? Schreib mir — ich melde mich innerhalb von 24 Stunden.</p>
+    <p class="section-label">Kostenloses Erstgespräch</p>
+    <h2>Nicht sicher, was du<br><em>brauchst?</em></h2>
+    <p class="contact-intro">30 Minuten, kostenlos. Ich schaue mir gemeinsam mit dir dein Setup an und gebe dir sofort verwertbare Einschätzungen — ohne Verkaufsdruck. Am Ende weißt du, wo die größten Hebel liegen, egal ob wir danach zusammenarbeiten oder nicht.</p>
     <div class="contact-detail">
       <a href="mailto:hello@blackscaling.de">hello@blackscaling.de</a>
       <a href="https://blackscaling.de">blackscaling.de</a>
@@ -927,9 +949,9 @@
         </button>
         <div class="service-dropdown-menu" id="serviceDropdownMenu">
           <label class="checkbox-label">
-            <input type="checkbox" name="service" value="Social Media Ad Creation">
+            <input type="checkbox" name="service" value="Meta Ad Creation">
             <span class="checkbox-box"></span>
-            Social Media Ad Creation
+            Meta Ad Creation
           </label>
           <label class="checkbox-label">
             <input type="checkbox" name="service" value="Shopify Store Optimierung">
