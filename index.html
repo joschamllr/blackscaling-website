@@ -491,7 +491,7 @@
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 2fr;
     gap: 6rem;
     align-items: start;
   }
@@ -774,6 +774,7 @@
     #about, #services { padding: 4rem 1.5rem; }
     .services-grid { grid-template-columns: 1fr; }
     #contact { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 3rem; }
+    .calendly-inline-widget { height: 900px !important; }
     footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
     .footer-links { justify-content: center; }
     .stats-row { gap: 1.5rem; }
@@ -931,57 +932,10 @@
     </div>
   </div>
 
-  <form action="https://formspree.io/f/mgopdbwg" method="POST">
-    <div class="form-group">
-      <label for="name">Name</label>
-      <input type="text" id="name" name="name" placeholder="Max Mustermann" required>
-    </div>
-    <div class="form-group">
-      <label for="email">E-Mail</label>
-      <input type="email" id="email" name="email" placeholder="mail@deineshop.de" required>
-    </div>
-    <div class="form-group">
-      <label>Leistungen</label>
-      <div class="service-dropdown" id="serviceDropdown">
-        <button type="button" class="service-dropdown-trigger" id="serviceDropdownTrigger" aria-expanded="false">
-          <span id="serviceDropdownLabel">— Bitte wählen —</span>
-          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="2,4 7,10 12,4"/></svg>
-        </button>
-        <div class="service-dropdown-menu" id="serviceDropdownMenu">
-          <label class="checkbox-label">
-            <input type="checkbox" name="service" value="Meta Ad Creation">
-            <span class="checkbox-box"></span>
-            Meta Ad Creation
-          </label>
-          <label class="checkbox-label">
-            <input type="checkbox" name="service" value="Shopify Store Optimierung">
-            <span class="checkbox-box"></span>
-            Shopify Store Optimierung
-          </label>
-          <label class="checkbox-label">
-            <input type="checkbox" name="service" value="Klaviyo Flows & Newsletter">
-            <span class="checkbox-box"></span>
-            Klaviyo Flows & Newsletter
-          </label>
-          <label class="checkbox-label">
-            <input type="checkbox" name="service" value="Meta Ads Management">
-            <span class="checkbox-box"></span>
-            Meta Ads Management
-          </label>
-          <label class="checkbox-label">
-            <input type="checkbox" name="service" value="Konkurrenzanalyse">
-            <span class="checkbox-box"></span>
-            Konkurrenzanalyse
-          </label>
-        </div>
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="message">Kurzbeschreibung</label>
-      <textarea id="message" name="message" placeholder="Was ist dein aktuelles Setup, was ist das Ziel?"></textarea>
-    </div>
-    <button type="submit" class="submit-btn">Anfrage senden</button>
-  </form>
+  <!-- Calendly inline widget begin -->
+  <div class="calendly-inline-widget" data-url="https://calendly.com/joscha-mueller-blackscaling/30min?primary_color=e8c97a" style="min-width:320px;height:700px;"></div>
+  <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+  <!-- Calendly inline widget end -->
 </section>
 
 <!-- FOOTER -->
