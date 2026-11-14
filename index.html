@@ -182,6 +182,7 @@
   .hook-note i { width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 4px rgba(74,222,128,0.16); flex-shrink: 0; }
 
   .portrait { position: relative; max-width: 420px; width: 100%; margin: 0 auto; }
+  .trust-portrait { display: none; }
   .portrait-frame { padding: 10px; border-radius: 36px; }
   .portrait-frame img {
     width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 12%;
@@ -361,6 +362,24 @@
     footer { flex-direction: row; justify-content: space-between; padding: 2.2rem 2.5rem; max-width: 1180px; margin: 0 auto; }
   }
 
+  /* ---------- MOBILE ONLY ---------- */
+  @media (max-width: 899px) {
+    /* 1. Nav-Button ausblenden */
+    .nav .btn { display: none; }
+    /* 2. Sekundären Hook-Button ausblenden */
+    .hook-actions .btn-glass { display: none; }
+    /* 3. Portrait im Hook ausblenden — erscheint stattdessen im Trust-Abschnitt */
+    #hook .portrait { display: none; }
+    .trust-portrait { display: block; max-width: 260px; margin: 0 auto 2rem; }
+    /* 4. Why: nur Überschrift + Text, Chip-Karte weg */
+    #why .load { display: none; }
+    #why { gap: 1rem; }
+    /* 5. Graph: nicht sticky, kompakter */
+    .graph-wrap { position: static; margin-bottom: 0.75rem; }
+    #how .graph { padding: 0.75rem; }
+    .g-axis, .g-foot { display: none; }
+  }
+
   /* Sehr niedrige Bildschirme: Graph nicht fixieren, sonst bleibt kein Platz */
   @media (max-width: 899px) and (max-height: 620px) { .graph-wrap { position: static; } }
 
@@ -531,6 +550,14 @@
   <p class="eyebrow" data-reveal>Vertrauen</p>
   <h2 data-reveal style="--d:80ms">Warum ich <em>der Richtige</em> bin.</h2>
   <p class="lead" data-reveal style="--d:160ms">Ich habe das alles zuerst mit meiner eigenen Brand und meinem eigenen Geld gemacht&nbsp;— bevor ich es für andere tue.</p>
+
+  <div class="portrait trust-portrait" data-reveal>
+    <div class="portrait-frame glass">
+      <img src="./joscha.png" alt="Joscha Müller, BlackScaling" width="928" height="1152" loading="lazy">
+    </div>
+    <div class="badge b1 glass"><b>50.000&nbsp;€+</b><span>eigener Ad Spend</span></div>
+    <div class="badge b2 glass"><b>5 Jahre</b><span>E-Commerce</span></div>
+  </div>
 
   <div class="proof">
     <div class="tile glass" data-reveal>
