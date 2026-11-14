@@ -198,6 +198,7 @@
   .badge span { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
   .badge.b1 { left: -0.4rem; bottom: 16%; }
   .badge.b2 { right: -0.4rem; top: 10%; animation-delay: -3.5s; }
+  .badge.b3 { right: -0.4rem; bottom: 4%; animation-delay: -1.8s; }
   @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
 
   /* ---------- 2 · WHY ---------- */
@@ -364,20 +365,17 @@
 
   /* ---------- MOBILE ONLY ---------- */
   @media (max-width: 899px) {
-    /* 1. Nav-Button ausblenden */
+    /* 1. Nav-CTA-Button ausblenden */
     .nav .btn { display: none; }
-    /* 2. Sekundären Hook-Button ausblenden */
+    /* 2. "So läuft's ab"-Button ausblenden */
     .hook-actions .btn-glass { display: none; }
-    /* 3. Portrait im Hook ausblenden — erscheint stattdessen im Trust-Abschnitt */
+    /* 3. Portrait aus dem Hero — erscheint in der Vertrauen-Sektion */
     #hook .portrait { display: none; }
-    .trust-portrait { display: block; max-width: 260px; margin: 0 auto 2rem; }
-    /* 4. Why: nur Überschrift + Text, Chip-Karte weg */
-    #why .load { display: none; }
-    #why { gap: 1rem; }
-    /* 5. Graph: nicht sticky, kompakter */
-    .graph-wrap { position: static; margin-bottom: 0.75rem; }
-    #how .graph { padding: 0.75rem; }
-    .g-axis, .g-foot { display: none; }
+    .trust-portrait { display: block; max-width: 320px; margin: 1rem auto 0; }
+    /* 4. Warum-Sektion komplett ausblenden */
+    #why { display: none; }
+    /* 5. Vertrauen: Kacheln weg — die Badges am Bild tragen die Zahlen */
+    #trust .proof { display: none; }
   }
 
   /* Sehr niedrige Bildschirme: Graph nicht fixieren, sonst bleibt kein Platz */
@@ -557,6 +555,7 @@
     </div>
     <div class="badge b1 glass"><b>50.000&nbsp;€+</b><span>eigener Ad Spend</span></div>
     <div class="badge b2 glass"><b>5 Jahre</b><span>E-Commerce</span></div>
+    <div class="badge b3 glass"><b>5-stellig</b><span>Monatsumsätze</span></div>
   </div>
 
   <div class="proof">
